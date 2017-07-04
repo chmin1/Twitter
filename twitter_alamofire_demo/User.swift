@@ -7,13 +7,18 @@
 //
 
 import Foundation
+import AlamofireImage
 
 class User {
     
     var name: String
+    var screenName: String
+    var imageURL: String
     
     init(dictionary: [String: Any]) {
         name = dictionary["name"] as! String
+        screenName = dictionary["screen_name"] as! String
+        imageURL = dictionary["profile_image_url_https"] as! String
 
     }
 }
