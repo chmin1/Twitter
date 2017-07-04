@@ -12,6 +12,8 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     var tweets: [Tweet] = []
     
+    var refreshControl: UIRefreshControl!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,10 +25,24 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
 //        tableView.rowHeight = UITableViewAutomaticDimension
 //        tableView.estimatedRowHeight = 100
         
+        refreshControl = UIRefreshControl() //used to refresh app
+        refreshControl.addTarget(self, action: #selector(TimelineViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        
+        getTimeLine()
+    }
+    
+    //function to see if user pulled down to refresh
+    func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        getTimeLine()
+    }
+    
+    func getTimeLine() {
         APIManager.shared.getHomeTimeLine { (tweets, error) in
             if let tweets = tweets {
                 self.tweets = tweets
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             } else if let error = error {
                 print("Error getting home timeline: " + error.localizedDescription)
             }
