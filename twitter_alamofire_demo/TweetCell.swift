@@ -27,7 +27,7 @@ class TweetCell: UITableViewCell {
             
             authorLabel.text = tweet.user.name
             
-            screenNameLabel.text = tweet.user.screenName
+            screenNameLabel.text = "@\(tweet.user.screenName)"
             
             tweetTextLabel.text = tweet.text
             
