@@ -9,7 +9,14 @@
 import UIKit
 import AlamofireImage
 
+protocol ComposeViewControllerDelegate: class {
+    func did(post: Tweet)
+}
+
 class ComposeViewController: UIViewController {
+    
+    
+    weak var delegate: ComposeViewControllerDelegate?
 
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -19,7 +26,7 @@ class ComposeViewController: UIViewController {
     
     @IBOutlet weak var tweetField: UITextView!
     
-    var user: User!
+    let user = User.current!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +38,26 @@ class ComposeViewController: UIViewController {
         screenName.text = user.screenName
     }
 
+    @IBAction func onCancel(_ sender: Any) {
+        
+        tweetField = nil
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func didTapPost(_ sender: Any) {
+        APIManager.shared.composeTweet(with: tweetField.text) { (tweet, error) in
+            if let error = error {
+                print("Error composing Tweet: \(error.localizedDescription)")
+            } else if let tweet = tweet {
+                self.delegate?.did(post: tweet)
+                print("Compose Tweet Success!")
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
