@@ -90,7 +90,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g82-Lb-MH0">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g82-Lb-MH0">
                                                     <rect key="frame" x="8" y="0.0" width="75" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="RoP-Lb-8XT"/>
@@ -207,12 +207,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="9Zi-uW-GTS">
                         <barButtonItem key="leftBarButtonItem" title="Tweet" id="a0q-VH-Q7b">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lg4-0x-uEN" userLabel="Tweet">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lg4-0x-uEN" userLabel="Tweet">
                                 <rect key="frame" x="16" y="8" width="84" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="edit-icon"/>
+                                <state key="normal" image="edit-icon"/>
                                 <connections>
-                                    <segue destination="nUy-qb-Da5" kind="presentation" id="gM9-xn-BRn"/>
+                                    <segue destination="nUy-qb-Da5" kind="presentation" id="jch-r1-Ksq"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -230,10 +230,10 @@
             </objects>
             <point key="canvasLocation" x="1660" y="36.431784107946029"/>
         </scene>
-        <!--View Controller-->
+        <!--Compose View Controller-->
         <scene sceneID="QgG-b9-ius">
             <objects>
-                <viewController id="nUy-qb-Da5" sceneMemberID="viewController">
+                <viewController id="nUy-qb-Da5" customClass="ComposeViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tvl-mw-DSt"/>
                         <viewControllerLayoutGuide type="bottom" id="lYS-vt-FM3"/>
@@ -251,7 +251,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bEa-pg-vsf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bEa-pg-vsf">
                                 <rect key="frame" x="24" y="60" width="75" height="75"/>
                                 <color key="backgroundColor" red="0.63641515544041449" green="0.63641515544041449" blue="0.63641515544041449" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -308,6 +308,12 @@
                             <constraint firstItem="CEc-ix-Dis" firstAttribute="leading" secondItem="bEa-pg-vsf" secondAttribute="trailing" constant="8" id="cak-K6-N6x"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="authorLabel" destination="CEc-ix-Dis" id="J5m-9w-J2Z"/>
+                        <outlet property="profileImage" destination="bEa-pg-vsf" id="zCP-yp-xpU"/>
+                        <outlet property="screenName" destination="IbB-3j-Gw4" id="18Z-dT-4T1"/>
+                        <outlet property="tweetField" destination="qOf-SF-sJi" id="bS5-Al-D4X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2MC-3A-yX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
