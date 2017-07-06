@@ -7,13 +7,28 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class ComposeViewController: UIViewController {
 
+    @IBOutlet weak var profileImage: UIImageView!
+    
+    @IBOutlet weak var authorLabel: UILabel!
+    
+    @IBOutlet weak var screenName: UILabel!
+    
+    @IBOutlet weak var tweetField: UITextView!
+    
+    var user: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        profileImage.af_setImage(withURL: URL(string: user.imageURL)!)
+        
+        authorLabel.text = user.name
+        
+        screenName.text = user.screenName
     }
 
     override func didReceiveMemoryWarning() {
