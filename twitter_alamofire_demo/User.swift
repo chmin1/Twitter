@@ -51,7 +51,8 @@ class User {
         
         name = dictionary["name"] as! String
         screenName = dictionary["screen_name"] as! String
-        imageURL = dictionary["profile_image_url_https"] as! String
+        let image = dictionary["profile_image_url_https"] as! String
+        imageURL = String((image.characters.dropLast(11))) + ".jpg"
         coverURL = dictionary["profile_banner_url"] as? String
         followersCount = dictionary["followers_count"] as! Int
         followingCount = dictionary["friends_count"] as! Int
