@@ -54,7 +54,7 @@ class Tweet {
         let date = formatter.date(from: createdAtOriginalString)!
         // Configure output format
         formatter.dateStyle = .short
-        formatter.timeStyle = .short
+        formatter.timeStyle = .none
         // Convert Date to String
         createdAtString = formatter.string(from: date)
         
