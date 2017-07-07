@@ -54,6 +54,20 @@ class TweetCell: UITableViewCell {
             } else {
                 favLabel.text = String(tweet.favoriteCount)
             }
+            
+            if (tweet.retweeted == true)
+            {
+                RTButton.isSelected = true
+            } else {
+                RTButton.isSelected = false
+            }
+            
+            if (tweet.favorited == true)
+            {
+                favButton.isSelected = true
+            } else {
+                favButton.isSelected = false
+            }
         }
     }
     
@@ -122,7 +136,6 @@ class TweetCell: UITableViewCell {
                 }
             }
         }
-
     }
     
     
