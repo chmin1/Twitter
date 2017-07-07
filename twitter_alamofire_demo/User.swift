@@ -14,7 +14,9 @@ class User {
     var name: String
     var screenName: String
     var imageURL: String
-    var coverURL: String
+    var coverURL: String?
+    
+    
     var followersCount: Int
     var followingCount: Int
     
@@ -52,7 +54,7 @@ class User {
         name = dictionary["name"] as! String
         screenName = dictionary["screen_name"] as! String
         imageURL = dictionary["profile_image_url_https"] as! String
-        coverURL = dictionary["profile_banner_url"] as! String
+        coverURL = dictionary["profile_banner_url"] as? String
         followersCount = dictionary["followers_count"] as! Int
         followingCount = dictionary["friends_count"] as! Int
         
