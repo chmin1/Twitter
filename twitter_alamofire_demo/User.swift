@@ -15,8 +15,6 @@ class User {
     var screenName: String
     var imageURL: String
     var coverURL: String?
-    
-    
     var followersCount: Int
     var followingCount: Int
     
